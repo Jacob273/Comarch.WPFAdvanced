@@ -13,7 +13,7 @@
 
     <Grid Background="Aqua">
 
-        <ListBox ItemsSource="{Binding Speeds}" >
+        <ListBox ItemsSource="{Binding Speeds}" DisplayMemberPath="Value" >
             
         </ListBox>
         
