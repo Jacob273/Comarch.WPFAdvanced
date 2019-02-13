@@ -13,9 +13,12 @@ namespace KM.Bosman.FakeServices
     {
         private IEnumerable<Speed> speeds;
 
-        public FakeSpeedService()
+        private readonly SpeedFaker speedFaker;
+
+        public FakeSpeedService(SpeedFaker speedFaker)
         {
-            SpeedFaker speedFaker = new SpeedFaker();
+            this.speedFaker = speedFaker;
+
             speeds = speedFaker.Generate(100);
         }
 
