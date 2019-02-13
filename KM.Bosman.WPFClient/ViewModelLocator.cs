@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity;
+using Unity.ServiceLocation;
 
 namespace KM.Bosman.WPFClient
 {
@@ -22,9 +23,9 @@ namespace KM.Bosman.WPFClient
 
         public ViewModelLocator()
         {
-            // UseUnity();
+             UseUnity();
 
-            UseAutoFac();
+           // UseAutoFac();
         }
 
 
@@ -36,7 +37,8 @@ namespace KM.Bosman.WPFClient
             container.RegisterSingleton<ISpeedService, FakeSpeedService>();
             container.RegisterType<SpeedsViewModel>();
 
-        //  ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
+            // Install-Package Unity.ServiceLocation
+            ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(container));
         }
 
         //  public SpeedsViewModel SpeedsViewModel => container.Resolve<SpeedsViewModel>();
