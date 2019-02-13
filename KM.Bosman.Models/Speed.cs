@@ -4,9 +4,23 @@ using System.Text;
 
 namespace KM.Bosman.Models
 {
-    public struct Speed
+    public class Speed : Base
     {
-        public float Value { get; set; }
+        private float _value;
+
+        public float Value
+        {
+            get => _value;
+            set
+            {                
+                _value = value;
+
+                OnPropertyChanged();
+            }
+        }
         public SpeedUnit Unit { get; set; }
+
+
+       
     }
 }

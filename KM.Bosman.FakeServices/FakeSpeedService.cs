@@ -4,20 +4,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace KM.Bosman.FakeServices
 {
     public class FakeSpeedService : ISpeedService
     {
+        private IEnumerable<Speed> speeds;
+
+        public FakeSpeedService()
+        {
+            SpeedFaker speedFaker = new SpeedFaker();
+            speeds = speedFaker.Generate(100);
+        }
+
         public IEnumerable<Speed> Get()
         {
-            throw new NotImplementedException();
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            return speeds;
         }
 
         public Task<IEnumerable<Speed>> GetAsync()
         {
-            throw new NotImplementedException();
+            return Task.Run(()=>Get());
         }
     }
 }

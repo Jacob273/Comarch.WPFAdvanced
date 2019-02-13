@@ -55,6 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SpeedsView.xaml.cs">
+      <DependentUpon>SpeedsView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +74,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SpeedsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +108,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KM.Bosman.FakeServices\KM.Bosman.FakeServices.csproj">
+      <Project>{9AC30FC0-7D57-4944-A7DE-43BAF113DA32}</Project>
+      <Name>KM.Bosman.FakeServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KM.Bosman.IServices\KM.Bosman.IServices.csproj">
+      <Project>{0621420C-9A01-40B7-B3D8-94B38350B84D}</Project>
+      <Name>KM.Bosman.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KM.Bosman.ViewModels\KM.Bosman.ViewModels.csproj">
+      <Project>{89A259E6-2F50-4338-88D9-742A132AABAF}</Project>
+      <Name>KM.Bosman.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KM.Bosman.IServices", "KM.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KM.Bosman.FakeServices", "KM.Bosman.FakeServices\KM.Bosman.FakeServices.csproj", "{9AC30FC0-7D57-4944-A7DE-43BAF113DA32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KM.Bosman.ViewModels", "KM.Bosman.ViewModels\KM.Bosman.ViewModels.csproj", "{89A259E6-2F50-4338-88D9-742A132AABAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9AC30FC0-7D57-4944-A7DE-43BAF113DA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AC30FC0-7D57-4944-A7DE-43BAF113DA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AC30FC0-7D57-4944-A7DE-43BAF113DA32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89A259E6-2F50-4338-88D9-742A132AABAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A259E6-2F50-4338-88D9-742A132AABAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A259E6-2F50-4338-88D9-742A132AABAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A259E6-2F50-4338-88D9-742A132AABAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
