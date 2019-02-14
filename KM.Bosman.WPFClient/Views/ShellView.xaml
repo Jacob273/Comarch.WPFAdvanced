@@ -3,7 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:KM.Bosman.WPFClient.Views"
+        xmlns:b="clr-namespace:KM.Bosman.WPFClient.Behaviors"
+        DataContext="{Binding Source={StaticResource Locator}, Path=ShellViewModel}"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
     <Grid>
@@ -14,8 +17,13 @@
             <DockPanel 
                 x:Name="Header"
                 DockPanel.Dock="Top">
-                <Button>Speeds</Button>
-                <Button>Winds</Button>
+                <Button Command="{Binding ShowSpeedsCommand}">Speeds</Button>
+                <Button Content="Winds">
+                    <i:Interaction.Behaviors>
+                        <b:MyButtonBehavior Color="Green" Text="{Binding Message}" />
+                    </i:Interaction.Behaviors>
+                </Button>
+                
                 <TextBlock DockPanel.Dock="Right">Logo</TextBlock>
                 <Border />
             </DockPanel>

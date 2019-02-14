@@ -35,6 +35,7 @@ namespace KM.Bosman.WPFClient
             IUnityContainer container = new UnityContainer();
             //          container.RegisterType<ISpeedService, FakeSpeedService>();
             container.RegisterSingleton<ISpeedService, FakeSpeedService>();
+            container.RegisterType<ShellViewModel>();
             container.RegisterType<SpeedsViewModel>();
 
             // Install-Package Unity.ServiceLocation
@@ -45,12 +46,14 @@ namespace KM.Bosman.WPFClient
 
 
         public SpeedsViewModel SpeedsViewModel => ServiceLocator.Current.GetInstance<SpeedsViewModel>();
+        public ShellViewModel ShellViewModel => ServiceLocator.Current.GetInstance<ShellViewModel>();
 
         // Install-Package AutoFac
         private void UseAutoFac()
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<FakeSpeedService>().As<ISpeedService>().SingleInstance();
+            builder.RegisterType<ShellViewModel>();
             builder.RegisterType<SpeedsViewModel>();
             builder.RegisterType<SpeedFaker>();
 
