@@ -6,12 +6,25 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:KM.Bosman.WPFClient.Views"
         xmlns:b="clr-namespace:KM.Bosman.WPFClient.Behaviors"
-        DataContext="{Binding Source={StaticResource Locator}, Path=ShellViewModel}"
+        xmlns:me="clr-namespace:KM.Bosman.WPFClient.MarkupExtensions"
+        xmlns:c="clr-namespace:KM.Bosman.WPFClient.Converters"
+        DataContext="{Binding ShellViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
         Title="ShellView" Height="450" Width="800">
+
+
+    <Window.Resources>
+        <c:MyConverter x:Key="MyConverter" />
+    </Window.Resources>
+        
+    
     <Grid>
 
 
+        <DockPanel Background="Aqua">
+            <Button Grid.Row="1">Test</Button>
+        </DockPanel>
+        
         <DockPanel>
 
             <DockPanel 
@@ -20,7 +33,7 @@
                 <Button Command="{Binding ShowSpeedsCommand}">Speeds</Button>
                 <Button Content="Winds">
                     <i:Interaction.Behaviors>
-                        <b:MyButtonBehavior Color="Green" Text="{Binding Message}" />
+                        <b:MyButtonBehavior Color="Green" Text="{Binding Path=Message, Converter={c:MyConverter}}" />
                     </i:Interaction.Behaviors>
                 </Button>
                 
@@ -32,7 +45,7 @@
             <StatusBar 
                 x:Name="StatusBar"
                 DockPanel.Dock="Bottom" >
-                <StatusBarItem>Item 1</StatusBarItem>
+                <StatusBarItem Content="{me:MyMarkup 100 }" />
                 <StatusBarItem>Item 2</StatusBarItem>
             </StatusBar>
 
