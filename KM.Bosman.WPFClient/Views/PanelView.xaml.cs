@@ -10,18 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace KM.Bosman.WPFClient.Views
 {
-     /// <summary>
-    /// Interaction logic for ShellView.xaml
+    /// <summary>
+    /// Interaction logic for PanelView.xaml
     /// </summary>
-    public partial class ShellView : Window
+    public partial class PanelView : Page
     {
-        public ShellView()
+        public PanelView()
         {
             InitializeComponent();
+        }
+
+        private void UniformGrid_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }
