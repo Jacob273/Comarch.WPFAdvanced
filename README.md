@@ -1,11 +1,5 @@
 # Przykłady ze szkolenia WPF dla zaawansowanych
 
----  
-title: WPF dla zaawansowanych
-author: Marcin Sulecki 
-date: February 11, 2019
----  
-
 #  MVVM
 
 ## INotifyPropertyChanged
