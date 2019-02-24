@@ -85,10 +85,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\MyButtonBehavior.cs" />
+    <Compile Include="Controls\HorizontalAxis.cs" />
     <Compile Include="Controls\MyControl.cs" />
+    <Compile Include="Controls\MyShape.cs" />
     <Compile Include="Converters\MyConverter.cs" />
     <Compile Include="MarkupExtensions\MyMarkupExtension.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="Views\DispatcherView.xaml.cs">
+      <DependentUpon>DispatcherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FreezableView.xaml.cs">
+      <DependentUpon>FreezableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GraphicsView.xaml.cs">
+      <DependentUpon>GraphicsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PanelView.xaml.cs">
       <DependentUpon>PanelView.xaml</DependentUpon>
     </Compile>
@@ -110,6 +121,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DispatcherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FreezableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GraphicsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

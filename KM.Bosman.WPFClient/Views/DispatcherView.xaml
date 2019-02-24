@@ -1,4 +1,4 @@
-﻿<Page x:Class="KM.Bosman.WPFClient.Views.SpeedsView"
+﻿<Page x:Class="KM.Bosman.WPFClient.Views.DispatcherView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,17 +6,14 @@
       xmlns:local="clr-namespace:KM.Bosman.WPFClient.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      DataContext="{Binding Source={StaticResource Locator}, Path=SpeedsViewModel}"
-      Title="SpeedsView">
+      Title="DispatcherView">
 
-   
+    <StackPanel x:Name="Panel">
+       
+        <Button Content="Send" Click="Button_Click" />
 
-    <Grid Background="Aqua">
+        <Label x:Name="Status" Content="Status" />
 
-        <ListBox ItemsSource="{Binding Speeds}" 
-                 DisplayMemberPath="Value" >
-            
-        </ListBox>
-        
-    </Grid>
+
+    </StackPanel>
 </Page>
