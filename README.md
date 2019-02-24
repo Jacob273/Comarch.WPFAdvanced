@@ -201,6 +201,30 @@ $end$]]>
 
 ## Attached Events
 
+Zdarzenia można również podczepiać z poziomu styli:
+
+~~~ xml
+   <Style TargetType="Button">
+            <EventSetter Event="Click" Handler="Button_Click" />
+  </Style>
+~~~
+
+~~~ csharp
+ private void Button_Click(object sender, RoutedEventArgs e)
+
+        {
+
+            Button button = e.OriginalSource as Button;
+
+
+
+            MessageBox.Show(button.Content.ToString());
+
+        }
+~~~
+
+uwaga: taki styl nie moze zostac przeniesiony do ResourceDictionary, gdyz sa luzne pliki XAML i nie maja dostepu do kodu w code-behind,  gdzie znajduje sie kod obslugi zdarzenia. Natomiast taki styl moze dziedziczyc z innego stylu za pomoca BaseOn. 
+
 
 
 # Freezable
