@@ -205,6 +205,136 @@ $end$]]>
 
 # Freezable
 
+## Zasada działania
+
+Aby zrozumiec zasadę działania klasy Freezable najlepiej zacząc od utworzenia własnej klasy, która będzie dziedziczyc po klasie _Freezable_
+
+``` csharp
+public class MyFreezable : Freezable
+    {
+        public double Size { getl set; }
+
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(MyFreezable), new PropertyMetadata(""));
+        
+        protected override Freezable CreateInstanceCore()
+        {
+            return new MyFreezable();
+        }
+    }
+
+```    
+
+Nastepnie tworzymy instancję i przypiszemy jakis tekst a nastepnie go zmienimy:
+
+``` csharp
+ MyFreezable myFreezable = new MyFreezable();
+ myFreezable.Text = "Hello World";
+
+ myFreezable.Text = "Hello WPF";
+ ```
+
+ Obiekt zachowuje sie w standardowy sposob, jak zwykla klasa .NET
+
+ ### Zmiana
+
+Klasa Freezable posiada zdarzenie _Changed_, ktore jest generowane w przypadku zmiany jakiekolwiek wlasciwosci **DependencyProperty** w naszym obiekcie.
+
+
+Przyklad: 
+``` csharp
+MyFreezable myFreezable = new MyFreezable();
+  myFreezable.Changed += e => Console.WriteLine("Changed");
+ myFreezable.Text = "Hello World";
+ myFreezable.Text = "Hello WPF";
+ ```
+
+Rezultat:
+```
+Changed
+Changed
+```
+
+Przypomina to interfejs **INotifyPropertyChanged** ale zauwazmy, ze nie musimy go implementowac. Zalatwia to klasa Freezable.
+
+
+uwaga: zmiana zwyklej wlasciwosci CLR nie generuje tego zdarzenia.
+
+```
+myFreezable.Size = 100;
+
+myFreezable.Size = 200;
+``` 
+
+
+W praktyce to zdarzenie jest wykorzystywane do przerysowania kontrolki w ramach potrzeby, zwlaszcza jesli mamy do czynienia z zasobami, ktore nie sa zarzadzane.
+
+
+### Zamrazanie
+
+Teraz kolej na najwazniejszy mechanizm tej klasy - zamrazanie obiektow.
+
+
+
+Przyklad: 
+``` csharp
+MyFreezable myFreezable = new MyFreezable();
+  myFreezable.Changed += (s,e) => Console.WriteLine("Changed");
+ myFreezable.Text = "Hello World";
+ myFreezable.Freeze();
+ myFreezable.Text = "Hello WPF";
+ ```
+
+Proba zmiany tekstu na zamrozonym obiekcie powoduje wygenerowanie wyjatku. 
+
+
+Aby uniknac wyjatku powinnismy upewnic sie, czy obiekt nie jest zamrozony za pomoca wlasciwosci **IsFrozen**.
+
+Przyklad: 
+``` csharp
+ if (myFreezable.IsFrozen)
+    Console.WriteLine("Frozen!")
+ else
+    myFreezable.Text = "Hello WPF";
+ ```
+
+
+Nie wszystkie obiekty mozna zamrazac, dlatego dla pewnosci powinnismy sprawdzic czy jest to mozliwe za pomoca wlasciwosci **CanFreeze**.
+
+Przyklad: 
+``` csharp
+if (myFreezable.CanFreeze)
+{
+    myFreezable.Freeze();
+}
+ ```
+
+Jesli chcelibysmy dokonac jakiejs zmiany na zamrozonym obiekcie musimy wykonac jego kopie za pomoga metody **Clone**. 
+
+``` csharp
+  if (myFreezable.IsFrozen)
+    {
+        MyFreezable copy = myFreezable.Clone() as MyFreezable;
+        copy.Text = "Hello 3";
+      }
+    else
+    {
+        myFreezable.Text = "Hello 2";
+    }
+```
+
+Wywolanie metody **Clone()** powoduje wywolanie metody **CreateInstanceCore**
+
+Teraz zmiana jest mozliwa, ale tylko na kopii.
+
+Warto zauwazyc, ze metoda **Clone()** wykonuje gleboka kopie obiektu.
+Inaczej niz zwykla metoda **MemberwiseClone**.
 
 
 # Dispatcher
